@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mangle</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<h1>Mangle: Agile Project Management</h1>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= link_to  "Sign In", :user_session %>
+<%= link_to  "Log Out", :destroy_user_session %>
+
+<%= yield %>
+<p>
+  This site was developed as part of the Ruby on Rails Bootcamp by Obtiva.
+</p>
+<script lang="javascript">
+  <%=yield :javascript%>
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @iteration.name %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @iteration.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @iteration.end_date %>
+</p>
+<p>
+  <b>Total Points:</b>
+  <%= @iteration.total_points %> Points
+</p>
+<% @iteration.stories.each do |story| %>
+    <p>
+      <%= story.name %>
+    </p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_iteration_path(@iteration) %> |
+<%= link_to 'Back', iterations_path %>

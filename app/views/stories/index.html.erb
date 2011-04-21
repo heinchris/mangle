@@ -1,0 +1,48 @@
+<h1>Listing stories</h1>
+
+<div id="stories">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Narrative</th>
+    <th>Estimate</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stories.each do |story| %>
+  <tr>
+    <td><%= story.name %></td>
+    <td><%= story.narrative %></td>
+    <td><%= story.estimate %></td>
+    <td><%= story.priority %></td>
+    <td><%= link_to 'Show', story %></td>
+    <td><%= link_to 'Edit', edit_story_path(story) %></td>
+    <td><%= link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+<%= will_paginate @stories %>
+</div>
+<br />
+
+<%= render 'form' %>
+
+<%= link_to 'New Story', new_story_path %>
+
+<% content_for :javascript do %>
+$(function() {
+    $("#not_present").click(function(event){
+        event.preventDefault();
+        $.post("/stories",
+                $("#new_story").serialize(),
+                function(data){
+                    var content = $(data).find("#stories");
+                    $("#stories").html(content);
+                });
+    })
+});
+<%	 end %>
